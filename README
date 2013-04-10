@@ -1,0 +1,57 @@
+This is a script I use to quickly set up RELEASES in the FLEXPART-WRF model.
+
+The script is written to create a Poisson shaped source representing a volcanic
+eruption.  The shape is based on a probability density function (pdf), if a different
+shape is desired, switch the function "poisson(nu,mu)" for something else.
+
+...This script has not yet been tested with flexpart-wrf...
+
+Contents:
+  flx_releases.py
+      The main script.
+      Reads ./options/COMMAND for simulation start and end dates
+      Reads ./column_heights.txt for date, time, column height, mass release
+        and source name for different phases of the eruption.
+      Writes result to ./option/RELEASES
+
+      Each eruption phase will split into several box-shaped sources.
+      The default configuration will split the eruption column into 10 slices
+      forming a pile of box sources. The mass released in each box is weighted
+      by an upside-down Poisson pdf. The horizontal span of each box is defined
+      by the total vertical span of the column and a normalized square root of 
+      the Poisson pdf. (So that mass concentration is about the same in all
+      boxes).
+
+      The example setup provided will create a RELEASES file with 3*10 sources.
+
+      The script requires some global variables to be set, see script for details.
+
+  column_heights.txt
+      Contains basic information describing the eruption, the columns are:
+        1 - Start date of phase
+        2 - Start time of phase
+        3 - End date of phase
+        4 - End time of phase
+        5 - Total column height (m above sea level) of phase
+        6 - Total mass release of phase
+        7 - Name of phase (will be used to form source comment in RELEASES)
+
+      The dates and time provided in this file do not have to fall within the
+      simulation period, instead, flx_releases.py assumes that the eruption
+      starts at simulation start.  All times will be recalculated relative this
+      date.  (The reason this format was chosen was a combination of the initial
+      data available, pythons (datetimes) way of handling dates and a bit of
+      laziness)
+
+  options/RELEASES
+      example file, not required, will be overwritten by flx_releases.py
+  options/COMMAND
+      example file, required by flx_releases.py
+
+Usage:
+  Put flx_releases.py in the run-dir of flexpart, if there is a separate dir
+  for options files this should be set in flx_releases.py (default: ./options).
+  Also set up the location of the volcano, summit height and species index.
+  Set up all config files (e.g. by running flx_inp.rb)
+  Run flx_releases.py (will overwrite RELEASES!)
+  Run flexpart
