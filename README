@@ -1,10 +1,32 @@
 This is a script I use to quickly set up RELEASES in the FLEXPART-WRF model.
 
-The script is written to create a Poisson shaped source representing a volcanic
-eruption.  The shape is based on a probability density function (pdf), if a different
-shape is desired, switch the function "poisson(nu,mu)" for something else.
+Aim of this software:
+  The script is written to create a Poisson shaped source representing a volcanic
+  eruption.  The shape is based on a probability density function (pdf), if a different
+  shape is desired, switch the function "poisson(nu,mu)" for something else.
 
-...This script has not yet been tested with flexpart-wrf...
+  Hopefully this will be implemented as an optional fortran subroutine in a future version
+  of flexpart-wrf.
+
+  The current approach assumes that concentration should not vary with altitude, this is
+  probably not physical and a more refined approach would be to assume constant mixing-
+  ratio. However, this requires knowledge about the air density at different altitudes
+  which we currently don't have.  A general solution would be to use the standard
+  atmospheric pressure, but since the local conditions will deviate from this, it might
+  be better to read density from the wrf data.
+
+  Getting accurate density data will not solve every issue with constant mixing ratio.
+  The current approach uses several discreet levels for the emisisons, these levels
+  must be made much smaller to minimize errors from atmospheric density.
+
+  In the end, it all comes down to defining the vertical mass distribution, which is
+  currently directly inherited from the selected shape (i.e. Poisson pdf).
+
+This script has been succesfully tested with flexpart-wrf (April 2013)
+
+Python dependencies:
+  * asciitable
+  * numpy
 
 Contents:
   flx_releases.py
@@ -49,9 +71,9 @@ Contents:
       example file, required by flx_releases.py
 
 Usage:
-  Put flx_releases.py in the run-dir of flexpart, if there is a separate dir
+  * Put flx_releases.py in the run-dir of flexpart, if there is a separate dir
   for options files this should be set in flx_releases.py (default: ./options).
   Also set up the location of the volcano, summit height and species index.
-  Set up all config files (e.g. by running flx_inp.rb)
-  Run flx_releases.py (will overwrite RELEASES!)
-  Run flexpart
+  * Set up all flexpart-wrf config files (e.g. by running flx_inp.rb)
+  * Run flx_releases.py (will overwrite RELEASES!)
+  * Run flexpart

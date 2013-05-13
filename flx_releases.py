@@ -11,8 +11,8 @@ import math                                     # Math tools
 pathOptions = "./options"   # path to COMMAND and RELEASES files
 speciesIndex=15             # table entry
 summitHeight = 1.55         # km asl
-centreLat   = 63.63         # Latitude of source (centre)
-centreLon   =-19.63         # Longitude of source (centre)
+centerLat   = 63.63         # Latitude of source (center)
+centerLon   =-19.63         # Longitude of source (center)
 npart       = 100000        # Number of particles released per hour
 
 #TODO
@@ -40,14 +40,14 @@ class Sources:
     def metres2degrees(self,metres):
         # Get distance in latitude,longitude from given distance in m.
         # This method assumes a spherical Earth and that the distance 
-        # from centreLat is small. The method should be accurate to about
+        # from centerLat is small. The method should be accurate to about
         # 1 % for latitude, and >1 % for Longitude (near 1 % at equator
         # but increases towards the poles, about 5 % at N63-N64)
         # Also check out: http://www.csgnetwork.com/degreelenllavcalc.html
         rEarth  = 6.371e6           # mean radius
         oEarth  = 2*math.pi*rEarth  # circumference
         m_per_deg_lat = oEarth/360
-        m_per_deg_lon = m_per_deg_lat*math.cos(math.radians(centreLat))
+        m_per_deg_lon = m_per_deg_lat*math.cos(math.radians(centerLat))
         dLat    = metres/m_per_deg_lat
         dLon    = metres/m_per_deg_lon
 
@@ -66,7 +66,7 @@ class Sources:
         
         # Normalize scaleFactors
         sfm = scaleFactors/sum(scaleFactors)        # for Mass
-        sfr = [math.sqrt(i) for i in scaleFactors]  # for Length (radius)
+        sfr = [math.sqrt(i) for i in scaleFactors]  # for Length (box side)
         sfr = sfr/sum(sfr)
         # The reason we use different scale factors for mass and length:
         # We want concentration to be about constant throughout the eruption
@@ -85,10 +85,10 @@ class Sources:
             h = hgts[ih]*1000   # We want height in m
             self.mass[ih] = mass*sfm[ih]
             dx,dy = self.metres2degrees(h*sfr[ih])
-            self.x0[ih] = centreLon-dx/2
-            self.x1[ih] = centreLon+dx/2
-            self.y0[ih] = centreLat-dy/2
-            self.y1[ih] = centreLat+dy/2
+            self.x0[ih] = centerLon-dx/2
+            self.x1[ih] = centerLon+dx/2
+            self.y0[ih] = centerLat-dy/2
+            self.y1[ih] = centerLat+dy/2
 
             # Get duration of eruption phase
             #diff = [i-j for i,j in zip(self.t1,self.t0)]    # duration as timedelta
