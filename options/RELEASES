@@ -22,16 +22,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6300
+ -19.6302
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6300
+  63.6299
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6300
+ -19.6298
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6300
+  63.6301
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -58,16 +58,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6301
+ -19.6307
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6300
+  63.6297
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6299
+ -19.6293
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6300
+  63.6303
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -94,16 +94,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6302
+ -19.6319
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6299
+  63.6292
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6298
+ -19.6281
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6301
+  63.6308
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -130,16 +130,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6304
+ -19.6345
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6298
+  63.6280
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6296
+ -19.6255
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6302
+  63.6320
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -166,16 +166,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6309
+ -19.6390
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6296
+  63.6260
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6291
+ -19.6210
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6304
+  63.6340
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -202,16 +202,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6315
+ -19.6453
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6293
+  63.6232
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6285
+ -19.6147
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6307
+  63.6368
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -238,16 +238,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6321
+ -19.6506
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6291
+  63.6208
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6279
+ -19.6094
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6309
+  63.6392
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -274,16 +274,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6321
+ -19.6509
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6291
+  63.6207
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6279
+ -19.6091
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6309
+  63.6393
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -310,16 +310,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6314
+ -19.6441
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6294
+  63.6237
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6286
+ -19.6159
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6306
+  63.6363
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -346,16 +346,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 120500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6305
+ -19.6348
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6298
+  63.6279
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6295
+ -19.6252
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6302
+  63.6321
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -382,16 +382,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6309
+ -19.6388
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6296
+  63.6261
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6291
+ -19.6212
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6304
+  63.6339
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -418,16 +418,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6327
+ -19.6568
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6288
+  63.6181
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6273
+ -19.6032
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6312
+  63.6419
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -454,16 +454,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6373
+ -19.7028
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6268
+  63.5977
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6227
+ -19.5572
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6332
+  63.6623
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -490,16 +490,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6473
+ -19.8031
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6223
+  63.5531
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6127
+ -19.4569
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6377
+  63.7069
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -526,16 +526,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6653
+ -19.9826
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6143
+  63.4734
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5947
+ -19.2774
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6457
+  63.7866
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -562,16 +562,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6899
+ -20.2288
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6034
+  63.3641
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5701
+ -19.0312
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6566
+  63.8959
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -598,16 +598,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.7113
+ -20.4433
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.5939
+  63.2688
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5487
+ -18.8167
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6661
+  63.9912
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -634,16 +634,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.7128
+ -20.4585
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.5932
+  63.2620
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5472
+ -18.8015
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6668
+  63.9980
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -670,16 +670,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6863
+ -20.1926
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6050
+  63.3801
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5737
+ -19.0674
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6550
+  63.8799
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -706,16 +706,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121000
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6491
+ -19.8210
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6215
+  63.5451
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6109
+ -19.4390
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6385
+  63.7149
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -742,16 +742,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6312
+ -19.6418
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6295
+  63.6248
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6288
+ -19.6182
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6305
+  63.6352
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -778,16 +778,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6336
+ -19.6659
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6284
+  63.6140
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6264
+ -19.5941
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6316
+  63.6460
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -814,16 +814,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6397
+ -19.7271
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6257
+  63.5869
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6203
+ -19.5329
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6343
+  63.6731
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -850,16 +850,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6530
+ -19.8596
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6198
+  63.5280
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6070
+ -19.4004
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6402
+  63.7320
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -886,16 +886,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6766
+ -20.0955
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6093
+  63.4232
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5834
+ -19.1645
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6507
+  63.8368
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -922,16 +922,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.7086
+ -20.4163
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.5951
+  63.2807
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5514
+ -18.8437
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6649
+  63.9793
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -958,16 +958,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.7363
+ -20.6926
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.5828
+  63.1580
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5237
+ -18.5674
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6772
+  64.1020
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -994,16 +994,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.7377
+ -20.7070
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.5822
+  63.1517
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5223
+ -18.5530
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6778
+  64.1083
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -1030,16 +1030,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.7028
+ -20.3577
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.5977
+  63.3068
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.5572
+ -18.9023
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6623
+  63.9532
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
@@ -1066,16 +1066,16 @@ ________ ______            i8,1x,i6 Beginning date and time of release
 20061231 121500
 ________ ______            i8,1x,i6 Ending date and time of release
 
- -19.6546
+ -19.8758
 ____.____                  f9.4  Longitude [DEG] of lower left corner
 
-  63.6191
+  63.5208
 ____.____                  f9.4  Latitude [DEG] of lower left corner
 
- -19.6054
+ -19.3842
 ____.____                  f9.4  Longitude [DEG] of upper right corner
 
-  63.6409
+  63.7392
 ____.____                  f9.4  Latitude [DEG] of upper right corner
 
         2
