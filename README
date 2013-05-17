@@ -8,12 +8,12 @@ Aim of this software:
   Hopefully this will be implemented as an optional fortran subroutine in a future version
   of flexpart-wrf.
 
-  The current approach assumes that concentration should not vary with altitude, this is
-  probably not physical and a more refined approach would be to assume constant mixing-
-  ratio. However, this requires knowledge about the air density at different altitudes
-  which we currently don't have.  A general solution would be to use the standard
-  atmospheric pressure, but since the local conditions will deviate from this, it might
-  be better to read density from the wrf data.
+  The current approach assumes that mixing ratio should not vary with altitude, this is
+  more physically correct than e.g. constant concentration, especially for very high 
+  eruption columns (where density variations become significant). The problem with this 
+  approach is getting the air density.  In this case we use the standard atmosphere.
+  Accuracy can be further improved by including this in the flexpart model so that we
+  get access to density fields from WRF.
 
   Getting accurate density data will not solve every issue with constant mixing ratio.
   The current approach uses several discreet levels for the emisisons, these levels
@@ -40,9 +40,9 @@ Contents:
       The default configuration will split the eruption column into 10 slices
       forming a pile of box sources. The mass released in each box is weighted
       by an upside-down Poisson pdf. The horizontal span of each box is defined
-      by the total vertical span of the column and a normalized square root of 
-      the Poisson pdf. (So that mass concentration is about the same in all
-      boxes).
+      by the total vertical span of the column, the normalized square root of 
+      the Poisson pdf and the density of the ambient air (So that mass mixing
+      ratio is about the same in all boxes).
 
       The example setup provided will create a RELEASES file with 3*10 sources.
 

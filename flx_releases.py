@@ -14,6 +14,27 @@ summitHeight = 1.55         # km asl
 centerLat   = 63.63         # Latitude of source (center)
 centerLon   =-19.63         # Longitude of source (center)
 npart       = 100000        # Number of particles released per hour
+mass_fraction = 1.0     # For multiple spec. runs; fraction of spec./total mass
+mixing_ratio= 1.0e+2        # Desired mixing ratio in the eruption column[kg/kg]
+                            # This is not the actual mixing ratio in the plume
+                            # as it is way too high, to be buoyant.
+                            # Setting it to a "realistic" value will cause a 
+                            # plume spread of ~1000 km...
+                            # However, not all ash in the column is suspended,
+                            # some will simply be there due to inertial upward
+                            # motion.
+
+# Notes on global variables:
+# mass_fraction     - fraction of total mass allocated to the species simulated
+#                     in the current run. This should probably be 1 for single 
+#                     species runs.
+# conc_at_sea_level - We calculate the concentration throughout the plume
+#                     based on a virtual concentration at sea level. What this
+#                     should be is a bit unclear, sorry.  We should make some
+#                     tests on this, it should probably depend on total mass or
+#                     eruption column height in some way. We should try some
+#                     different value and compare it to estimates of ash load at
+#                     the top of eruption columns.
 
 #TODO
 # def setTime(simstart):
@@ -53,56 +74,163 @@ class Sources:
 
         return dLon,dLat
         
+    def std_atm(self,alt):
+        # Function should accept 1-d arrays or scalars
+        # Takes altitude in km as input
+        # Returns density, pressure and temperature ratios (in that order)
+        # To get the absolute of any value, multiply it with the ground level
+        # value, e.g. T(z) = ratio(z)*T0
+
+        # CONSTANTS
+        rearth  = 6369.0        # Radius of the Earth
+        gmr     = 34.163195     # Hydrostatic constant
+        ntab    = 8             # No. of vertical section in std atm
+        #
+        
+        # STANDARD ATMOSPHERE TABLES
+        htab = array([0.0, 11.0, 20.0, 32.0, 47.0, 51.0, 71.0, 84.852],\
+                     dtype=float)
+        ttab = array([288.15, 216.65, 216.65, 228.65, \
+                      270.65, 270.65, 214.65, 186.946],\
+                     dtype=float)
+        ptab = array([1.0000000E-0, 2.2336110E-1, 5.4032950E-2, 8.5666784E-3,\
+                     1.0945601E-3, 6.6063531E-4, 3.9046834E-5, 3.68501E-6],\
+                     dtype=float)
+        gtab = array([-6.5, 0.0, 1.0, 2.8, 0.0, -2.8, -2.0, 0.0],dtype=float)
+        # htab - geopotential height
+        # ttab - temperature
+        # ptab - pressure
+        # gtab - lapserate (g = gamma) 
+        #
+
+        # BEGIN
+        alt*rearth
+        height = alt*rearth/(alt+rearth) # convert geometric to geopotential height
+
+        theta = zeros(shape(height)[:])     # predefine some arrays
+        delta = zeros(shape(height)[:])
+        for i,h in ndenumerate(height):
+            ilo = max(nonzero(htab<=h))[0] # which table entry to use
+            tgrad = gtab[ilo]           # temperature gradient in layer
+            tbase = ttab[ilo]           # temperature at bottom of layer
+            deltah  = h-htab[ilo]       # distance from bottom of layer
+            tlocal  = tbase+tgrad*deltah    # temperature at given height
+            theta[i] = tlocal/ttab[0]       # temperature ratio (local/sea level)
+            if tgrad == 0:
+                delta[i] = ptab[ilo]*exp(-gmr*deltah/tbase) # pressure ratio
+            else:
+                delta[i] = ptab[ilo]*(tbase/tlocal)**(gmr/tgrad) # pressure ratio
+
+        sigma = delta/theta     # Density ratio
+
+        return sigma,delta,theta
 
     def calcLayers(self,hgts,mass,scaleFactors):
         #TODO: check arguments
-        # input hgt in [m]
+        # input hgts in [m]
         # sets up the source layers based on total column height
         # hgts is a list of vertical layer tops
         # p is an array with scale factors (from probability density function)
         # p will be normalized so that sum(p)=1
         # We also require the global variable summitHeight to determine the
         # bottom of the lowermost layer.
+        # Standard atmospheric data will be used to determine horizontal
+        # spread of the plume
         
-        # Normalize scaleFactors
-        sfm = scaleFactors/sum(scaleFactors)        # for Mass
-        sfr = [math.sqrt(i) for i in scaleFactors]  # for Length (box side)
-        sfr = sfr/sum(sfr)
-        # The reason we use different scale factors for mass and length:
-        # We want concentration to be about constant throughout the eruption
-        # column, concentration in each layer is a function of mass and radius:
-        #   C = const*mass/radius^2     [ m/(pi*r^2*h) ]
-        # (layer thickness, h, is constant)
-        # Therefore, maximum concentration would be at the smallest r.
-        # By using the sqrt of the sf for r we get something more realistic
+        # We want mixing ratio to be about constant throughout the eruption
+        # column, this is the same as a constant ratio between the atmospheric
+        # density and concentration of ash should be constant throughout the
+        # column:
+        #   [ash conc]/[air density] = [MassMix] = constant
+        # If we know the total mass emissions rate [mer] at a thin vertical
+        # segment, we can express the volume of that segment as follows:
+        #   dV = X(z)*Y(z) dz = [residence time]*[mer]/[MassMix]/[air density]
+        # Where the residence time is the average time it takes for newly
+        # released particle to leave the source volume laterally.
+        # The residence time should be rev. proport. to the horiz. wind speed
+        # [residence time] = 1/U * X(z)/2
+        # Thus, if we know the air density and the mass mixing ratio we
+        # can determine a theoretical value for the horizontal spread of
+        # the plume: 
+        #   X(z) = 1/(2*[MassMix]) * [mer]/([density] U dz] (1)
+        #
+        # A limitation of this method is that we do not account the mass 
+        # loss due to fallout of larger clasts in the lower portion of the 
+        # eruption column, however, as we are mainly interested in the
+        # long range dispersion, we probably don't even want to consider
+        # such large clasts.  This assumption gets less valid for larger
+        # eruption columns(?).
+        #
+        # It would be preferable to assign a cylindrical shape of each
+        # segment but the current version of flexpart cannot support this
+        # so we have to make do with box-shaped plume segments
 
         self.z1[:]  = [h*1000 for h in hgts[:]]       # Top of layers
         self.z0[1:] = [h*1000 for h in hgts[:-1]]     # Bottom of layers
         self.z0[0]  = summitHeight*1000  # Bottom of lowest layer
 
+        # Make an estimate of the air density in the ambient atmosphere
+        rho_air = zeros(shape(hgts)[0])   # Desired ash concentration at heights
+        u_ave = zeros(shape(hgts)[0])     # Wind speed at heights
         for ih in xrange(shape(hgts)[0]):
-            # For each layer (slice) of the source
-            h = hgts[ih]*1000   # We want height in m
-            self.mass[ih] = mass*sfm[ih]
-            dx,dy = self.metres2degrees(h*sfr[ih])
+            # Create a sample of heights in the layer (to improve accuracy)
+            # TODO: Number of samples should depend on layer span and/or
+            #       second derivative of density with regard to z
+            h = linspace(self.z1[ih],self.z0[i],10)/1000    # in km !!
+            # Calculate standard atmospheric parameters for each sample
+            sigmas,deltas,thetas = self.std_atm(h)
+            # Here, sigma is the ratio between sea level density and density
+            # the given altitude.  Thus it is also the ratio between ash mass
+            # MR relative a virtual MR at sea level.
+            # We will use the mean of the ratio to get the bulk air density
+            rho_air[ih] = mean(sigmas)
+
+            # We currently just set wind speed to a constant:
+            u_ave[ih] = 10      # m/s
+
+        # Normalize mass scaleFactors
+        sfm = scaleFactors/sum(scaleFactors)        # for Mass
+
+        # For each layer (slice) of the source
+        print 'z, dx in metres:'   # output from loop, mainly for verifying result
+        for ih in xrange(shape(hgts)[0]):
+
+            # The mass emitted at a given layer is the total emission by the
+            # volcano over the given time period time the fraction allocated to
+            # the current species times the scale factor for the current level.
+            self.mass[ih] = mass*mass_fraction*sfm[ih] 
+
+            # The duration of the eruption phase is used to determine number of
+            # particles released the shape of the source cloud
+            diff = self.t1[ih]-self.t0[ih]      # duration as timedelta and...
+            dt_hours = float(diff.days*24)+float(diff.seconds)/3600.0 #number
+            dt_seconds = dt_hours*3600.0
+
+            #print dt,diff.seconds
+            if dt_hours <= 0.0:
+                print "t0,t1:",self.t1[ih],"\t",self.t0[ih]
+                print "dt_hours:",dt_hours
+                raise Exception("Duration of phase is too short, make sure"\
+                                "t0 and t1 are properly defined")
+
+            # Calculate horizontal spread according to (1)
+            # this should depend on the sea level virtual concentration (or some
+            # predetermined mixing ratio?), air density at the given layer and
+            # the mass emitted at the given layer as well as the duration of the
+            # current phase.
+            dz = self.z1[ih]-self.z0[ih]        #depth of layer
+            dx_metres = 0.5/mixing_ratio*\
+                    self.mass[ih]/(dt_seconds*rho_air[ih]*u_ave[ih]*dz)
+            print self.z1[ih], dx_metres
+            # Convert horizontal spread to degrees lat,lon
+            dx,dy = self.metres2degrees(dx_metres)
             self.x0[ih] = centerLon-dx/2
             self.x1[ih] = centerLon+dx/2
             self.y0[ih] = centerLat-dy/2
             self.y1[ih] = centerLat+dy/2
 
-            # Get duration of eruption phase
-            #diff = [i-j for i,j in zip(self.t1,self.t0)]    # duration as timedelta
-            #dt   = [d.days*24+d.seconds/3600 for d in diff] # duration in hours
-            diff = self.t1[ih]-self.t0[ih]
-            dt   = float(diff.days*24)+float(diff.seconds)/3600.0
-            print dt,diff.seconds
-            if dt <= 0.0:
-                print "t0,t1:",self.t1[ih],"\t",self.t0[ih]
-                print "dt:",dt
-                raise Exception("Duration of phase is too short, make sure"\
-                                "t0 and t1 are properly defined")
 
-            self.npart[ih] = npart/self.n*dt # N particles to be released
+            self.npart[ih] = npart/self.n*dt_hours # N particles to be released
             
 
     def fPrint(self,fid):
