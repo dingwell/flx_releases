@@ -1,26 +1,38 @@
 This is a script I use to quickly set up RELEASES in the FLEXPART-WRF model.
 
 Aim of this software:
-  The script is written to create a Poisson shaped source representing a volcanic
-  eruption.  The shape is based on a probability density function (pdf), if a different
-  shape is desired, switch the function "poisson(nu,mu)" for something else.
+  The main script is written to create an umbrella shaped source representing a
+  vocanic eruption eruption.  The vertical mass distribution is based on a
+  specific probability density function (pdf), default is a Poisson shaped
+  source, if a different shape is desired, switch the function "poisson(nu,mu)"
+  for something else.
 
-  Hopefully this will be implemented as an optional fortran subroutine in a future version
-  of flexpart-wrf.
+  The current approach assumes that mixing ratio should not vary with altitude,
+  this is more physically correct than e.g. constant concentration, especially
+  for very high eruption columns (where density variations become significant).
 
-  The current approach assumes that mixing ratio should not vary with altitude, this is
-  more physically correct than e.g. constant concentration, especially for very high 
-  eruption columns (where density variations become significant). The problem with this 
-  approach is getting the air density.  In this case we use the standard atmosphere.
-  Accuracy can be further improved by including this in the flexpart model so that we
-  get access to density fields from WRF.
+  One issue with this approach is getting the air density.  In this case we
+  use the standard atmosphere. Accuracy can be further improved by including
+  this functionality directly in the flexpart model so that we get access to
+  density fields from WRF.  This would also allow more flexibility of the
+  source, for better or worse...
 
-  Getting accurate density data will not solve every issue with constant mixing ratio.
-  The current approach uses several discreet levels for the emisisons, these levels
-  must be made much smaller to minimize errors from atmospheric density.
+  Getting accurate density data will not solve every issue with constant mixing
+  ratio. The current approach uses several discreet levels for the emisisons,
+  these levels must be made much smaller to minimize errors from atmospheric
+  density.
 
-  In the end, it all comes down to defining the vertical mass distribution, which is
-  currently directly inherited from the selected shape (i.e. Poisson pdf).
+  After some initial testing I believe the mixing ratio should be set to a
+  rather high value, (~10-100).  Otherwise the horizontal spread grows too large
+  for us to be able to ignore the influence of atmospheric dynamics (which is
+  ridiculously simplified in this set up).
+
+  In the end this approach should be more realistic than defining any kind of
+  uniform vertical source as is the common approach in atmospheric dispersion
+  models.
+
+  Hopefully this will be implemented as an optional fortran subroutine in a
+  future version of flexpart-wrf.
 
 This script has been succesfully tested with flexpart-wrf (April 2013)
 
@@ -40,9 +52,9 @@ Contents:
       The default configuration will split the eruption column into 10 slices
       forming a pile of box sources. The mass released in each box is weighted
       by an upside-down Poisson pdf. The horizontal span of each box is defined
-      by the total vertical span of the column, the normalized square root of 
-      the Poisson pdf and the density of the ambient air (So that mass mixing
-      ratio is about the same in all boxes).
+      by the total vertical span of the column, the normalized Poisson pdf and
+      the density of the ambient air (So that mass mixing ratio is about the
+      same in all boxes).
 
       The example setup provided will create a RELEASES file with 3*10 sources.
 
