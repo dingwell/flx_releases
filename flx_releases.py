@@ -13,7 +13,7 @@ speciesIndex=15             # table entry
 summitHeight = 1.55         # km asl
 centerLat   = 63.63         # Latitude of source (center)
 centerLon   =-19.63         # Longitude of source (center)
-npart       = 100000        # Number of particles released per hour
+npart       = 10000         # Number of particles released per hour
 
 #TODO
 # def setTime(simstart):
